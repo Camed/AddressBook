@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AddressBook.Models;
-
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 namespace AddressBook.Pages
 {
     public class IndexModel : PageModel
@@ -14,10 +15,7 @@ namespace AddressBook.Pages
         private readonly ILogger<IndexModel> _logger;
 
         [BindProperty]
-        public Address Address { get; set; }
-
-        [BindProperty(SupportsGet = true)]
-        public string Name { get; set; }
+        public FizzBuzz FizzBuzz { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -26,12 +24,17 @@ namespace AddressBook.Pages
 
         public void OnGet()
         {
-            if (string.IsNullOrWhiteSpace(Name)) Name = "User";
+            
         }
 
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid) return Page();
+            if (ModelState.IsValid)
+            {
+                FizzBuzz.SessionId = HttpContext.Session.Id;
+                HttpContext.Session.SetString("SessionAddress", JsonConvert.SerializeObject(FizzBuzz));
+                return RedirectToPage("./FizzBuzz");
+            }
             return RedirectToPage("./Privacy");
         }
     }

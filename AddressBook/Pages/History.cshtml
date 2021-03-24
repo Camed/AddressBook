@@ -1,0 +1,15 @@
+﻿@page
+@model AddressBook.Pages.HistoryModel
+
+@if (Model.fizzBuzzList != null)
+{
+    @foreach (var x in Model.fizzBuzzList)
+    {
+        @if (HttpContext.Session.Id == x.SessionId)
+        {
+            <p>@x.fbNumber: @x.fbValue</p>
+        }
+
+    }
+}
+
