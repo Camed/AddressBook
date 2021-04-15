@@ -7,17 +7,18 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using AddressBook.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.Http;
+using AddressBook.Data;
+using System.Globalization;
 
 namespace AddressBook.Pages
 {
     public class HistoryModel : PageModel
     {
 
-        public List<FizzBuzz> fizzBuzzList { get => History.FizzBuzzList; }
+        public List<FizzBuzz> fizzBuzzList { get => History.FizzBuzzList; }    
         public void OnGet()
         {
-
+            
         }
     }
 }

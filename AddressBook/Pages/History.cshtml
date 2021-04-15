@@ -1,15 +1,22 @@
 ﻿@page
 @model AddressBook.Pages.HistoryModel
 
+<div class="text-center">
+    <h1 class="text-info">Here is your history: </h1>
+</div>
+
 @if (Model.fizzBuzzList != null)
 {
-    @foreach (var x in Model.fizzBuzzList)
+    foreach (var x in Model.fizzBuzzList)
     {
-        @if (HttpContext.Session.Id == x.SessionId)
-        {
-            <p>@x.fbNumber: @x.fbValue</p>
-        }
-
+    <div class="row">
+    @if (HttpContext.Session.Id == x.SessionId)
+    {
+        <div class="col">
+            <label>@x.fbNumber</label>
+            <label>@x.fbValue</label>
+        </div>
+    }
+    </div>
     }
 }
-
