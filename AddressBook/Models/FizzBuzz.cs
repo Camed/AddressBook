@@ -11,6 +11,7 @@ namespace AddressBook.Models
         public int fbNumber { get; set; }
 
         public string SessionId { get; set; }
+        public string DateTime { get; set; }
 
         [Display(Name="Answer")]
         public string fbValue 

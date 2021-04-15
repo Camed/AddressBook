@@ -16,6 +16,7 @@ namespace AddressBook.Pages
     {
 
         public List<FizzBuzz> fizzBuzzList { get => History.FizzBuzzList; }    
+        public List<FizzBuzzContext> fizzBuzzContexts { get => History.FizzBuzzDataModels;  }
         public void OnGet()
         {
             
