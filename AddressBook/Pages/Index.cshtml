@@ -22,3 +22,37 @@
 
     </form>
 </div>
+<<<<<<< Updated upstream
+=======
+@Model.readSize <br />
+<h1>Downloaded from JSON: </h1>
+<div class="text-left">
+    @foreach (var prod in Model.Products)
+    {
+        <div class="row">
+            <div class="col">
+                <h4>@prod.Realid</h4>
+                <h4>@prod.Title</h4>
+                <h4>@prod.Url</h4>
+            </div>
+        </div>
+    }
+</div>
+
+<h1>Downloaded from DB: </h1>
+<div class="text-left">
+    @foreach (var prod in Model.DBProducts)
+    {
+        <div class="row">
+            <div class="col">
+                <h4>@prod.Realid</h4>
+                <h4>@prod.Title</h4>
+                <h4>@prod.Url</h4>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+>>>>>>> Stashed changes

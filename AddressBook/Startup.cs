@@ -8,6 +8,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+<<<<<<< Updated upstream
+=======
+using AddressBook.Models;
+using AddressBook.Data;
+using Microsoft.EntityFrameworkCore;
+using AddressBook.Services;
+>>>>>>> Stashed changes
 
 namespace AddressBook
 {
@@ -24,6 +31,7 @@ namespace AddressBook
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddTransient<JsonFileProductService>();
             services.AddDistributedMemoryCache();
             services.AddSession(options => { options.IdleTimeout = TimeSpan.FromMinutes(10); options.Cookie.HttpOnly = true; options.Cookie.IsEssential = true; } );
 
