@@ -8,13 +8,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-<<<<<<< Updated upstream
-=======
 using AddressBook.Models;
-using AddressBook.Data;
-using Microsoft.EntityFrameworkCore;
+
 using AddressBook.Services;
->>>>>>> Stashed changes
 
 namespace AddressBook
 {

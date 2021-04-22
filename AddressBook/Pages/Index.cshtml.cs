@@ -8,28 +8,36 @@ using System.Threading.Tasks;
 using AddressBook.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using AddressBook.Data;
+using Microsoft.Extensions.Configuration;
+using AddressBook.Services;
+using System.Data.SqlClient;
 
 namespace AddressBook.Pages
 {
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private readonly FizzBuzzContext _context;
-
+        
+        public int readSize { get; set; }
+        public IEnumerable<Product> Products { get; private set; }
+        public List<Product> DBProducts { get; private set; }
         public IConfiguration configuration { get; }
 
         [BindProperty]
         public FizzBuzz FizzBuzz { get; set; }
 
-        public IndexModel(IConfiguration configuration, ILogger<IndexModel> logger, FizzBuzzContext context)
+        public IndexModel(IConfiguration configuration, ILogger<IndexModel> logger, JsonFileProductService productService)
         {
+            this.configuration = configuration;
             _logger = logger;
-            _context = context;
+            Products = productService.GetProducts();
+            DBProducts = new List<Product>();
         }
 
         public void OnGet()
         {
+            string connectionString = configuration.GetConnectionString("ProductDB");
+            SqlConnection con = new SqlConnection(connectionString);
 
             string query = "SELECT * FROM ProductDB";
             SqlCommand cmd = new SqlCommand(query, con);

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using AddressBook.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.Http;
 
 namespace AddressBook.Pages
 {
