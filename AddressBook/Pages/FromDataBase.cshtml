@@ -1,7 +1,6 @@
 ﻿@page
-@model IndexModel
+@model AddressBook.Pages.FromDataBaseModel
 @{
-    ViewData["Title"] = "FizzBuzz";
 }
 <style>
     table {
@@ -14,14 +13,13 @@
         text-align: left;
         padding: 8px;
     }
+
     tr:nth-child(even) {
         background-color: #dddddd;
     }
 </style>
 
-<a href="./FromDataBase">Get me to the products from database!</a>
-
-<h1>Downloaded from JSON: </h1>
+<h1>Downloaded from Database: </h1>
 <table>
     <tr>
         <th>Maker</th>
@@ -32,12 +30,12 @@
     </tr>
     @foreach (var prod in Model.Products)
     {
-    <tr>
-        <td>@prod.Maker</td>
-        <td><img src="@prod.Image" alt="@prod.Image" width="200px" height="auto" /></td>
-        <td>@prod.Title</td>
-        <td><a href="@prod.Url">Click!</a></td>
-        <td>@prod.Description</td>
-    </tr>
+        <tr>
+            <td>@prod.Maker</td>
+            <td><img src="@prod.Image" alt="@prod.Image" width="200px" height="auto" /></td>
+            <td>@prod.Title</td>
+            <td><a href="@prod.Url">Click!</a></td>
+            <td>@prod.Description</td>
+        </tr>
     }
 </table>

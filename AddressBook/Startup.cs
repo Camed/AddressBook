@@ -9,8 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AddressBook.Models;
-
 using AddressBook.Services;
+using AddressBook.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace AddressBook
 {
@@ -26,6 +27,10 @@ namespace AddressBook
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ProductContext>(o =>
+            {
+                o.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ProductDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+            });
             services.AddRazorPages();
             services.AddTransient<JsonFileProductService>();
             services.AddDistributedMemoryCache();
